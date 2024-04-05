@@ -1,5 +1,5 @@
 # App 
-An application framework for web based GUIs with a Python backed.
+An application framework for web based GUIs with a Python backend.
 
 
 ## About

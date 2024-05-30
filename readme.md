@@ -14,7 +14,7 @@ The python web server, Starlette, hosts static assets and API routes to support 
 6. logs - folder where debug log files will be created
 
 ## Getting started
-Install dependencies:
-1. pip install starlette, sse_starlette, uvicorn, colorama
-2. run main: python main.py
-3. navigate to GUI (click link provided) or go to http://localhost:5000 by default 
+1. install dependencies: py -m pip install starlette sse_starlette uvicorn colorama
+2. run main: py main.py
+3. navigate to GUI (click link provided) or go to http://localhost:5000 by default
+4. customize: modify static folder contents to update GUI and send messages to python (or vice versa)

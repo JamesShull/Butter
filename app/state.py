@@ -7,6 +7,15 @@ class State():
         }
         self.resetToDefaults()
 
+    def add(self, key, value = None):
+        """Add an item to the cache.
+        Args:
+            key (str): The key for the value.
+            value: The optional value to be stored.
+        """
+        self.cache[key] = value
+
+
     def set(self, key, value):
         """
         Set a value in the cache.

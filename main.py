@@ -1,7 +1,7 @@
-import app
+import app.app as app
 import colorama
 import logging
-import serverConfig
+import app.serverConfig as serverConfig
 from starlette.applications import Starlette
 import traceback
 import uvicorn

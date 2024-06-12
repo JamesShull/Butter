@@ -17,4 +17,4 @@ The python web server, Starlette, hosts static assets and API routes to support 
 1. install dependencies: py -m pip install starlette sse_starlette uvicorn colorama
 2. run main: py main.py
 3. navigate to GUI (click link provided) or go to http://localhost:5000 by default
-4. customize: modify static folder contents to update GUI and send messages to python (or vice versa)
+4. customize: modify view folder contents to update GUI and send messages to python (or vice versa)

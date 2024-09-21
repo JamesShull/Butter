@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+  <!-- html head -->
+  <head>
+    <title>Butter</title>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/x-icon" href="/assets/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="lib/global.css" />
+  </head>
+
+  <!-- html content -->
+  <body>
+    <nav class="navFrame">
+      <div class="dropdown">
+        <span class="open">&#x2261;</span>
+        <div class="dropdown-content">
+          <span id="execVersion"></span>
+          <p><a id="docs" target="_blank" href="docs">Docs</a></p>
+          <p><a id="user"  href="#">Login</a>&nbsp;(<span id="currentUser"></span>)</p><hr> 
+          <p id="singleStep"><a href="#">Single Step</a></p>
+          <p><a target="_blank" href="cache/config.json" id="viewConfig">View Config</a></p>
+          <p><a id="addComment" href="#">Add Comment</a></p>
+          <p id="repeat"><a href="#">Repeat Test</a></p>
+          <p id="mode"><a href="#">Failure Mode</a></p>
+          <p id="submitRev"><a href="#">Update Revision</a></p>
+          <hr><p><a target="_blank" href="http://testdata.hme.com">Test Data Website</a></p>
+          <p id="updateApp"><a href="#">Update App</a></p>
+          <p><a href="#" id="resetApp">Reset App</a></p>
+        </div>
+      </div>
+      <div><span id="testTime"></span></div>
+      <div class="toolTip">
+        <a id="AppTitle">
+          <h2>Butter</h2>
+        </a>
+      </div>
+    </nav>
+    <hr>
+    <!-- Status Bar -->
+    <div class="flexContainer">
+      <div class="flexContainer justifyLeft">
+        <div><h4 id="stationId">PC Name</h4></div>
+      </div>
+      <div class="gap"></div>
+      <div class="flexContainer">
+        <div>
+          <h4><span id="statusDate">date</span>&NonBreakingSpace;<span id="statusTime">time</span></h4>
+        </div>
+      </div>
+      <div class="gap"></div>
+      <div class="flexContainer justifyCenter">
+        <div class="flexContainer justifyCenter">
+          <input type="radio" class="statusLED" name="RLY" id="RLY" value="RLY" checked />
+          <label for="RLY">RLY</label>
+        </div>
+        <div class="flexContainer justifyCenter">
+          <input type="radio" class="statusLED" name="NET" id="NET" value="NET" checked />
+          <label for="NET">H-Drive</label>
+        </div>
+        <div class="flexContainer justifyCenter">
+          <input type="radio" class="statusLED" name="SQL" id="SQL" value="SQL" checked />
+          <label for="SQL">SQL</label>
+        </div>
+      </div>
+    </div>
+    <br/>
+
+    <!-- Hidden password entry -->
+    <div id="passwordEntry" class="flexContainer justifyCenter">
+      <label for="userInput">User Type: </label>
+      <select id="userInput" name="user">
+        <option value="operator">Operator</option>
+        <option value="tech">Technician</option>
+        <option value="admin">Admin</option>
+        <option value="factoryService">Factory Service</option>
+      </select>
+      <label for="passInput">Enter Password:</label>
+      <input type="password" id="passInput" name="password" minlength="8" required>
+      <button class="submitButton" id="userSubmit">Submit</button>
+    </div>
+
+    <!-- Hidden revision entry -->
+    <div id="seqRevisionEntry" class="flexContainer justifyCenter">
+      <label for="submitSeqName">Sequence Name: </label>
+      <select id="submitSeqName" name="sequence name">
+        <option value="operator">...loading...</option>
+      </select>
+      <button class="submitButton" id="revSubmit">Submit</button>
+    </div>
+
+    <!-- Hidden mode selection entry -->
+    <div class="flexContainer justifyCenter modeEntry">
+      <button id="normalModeButton">Stop<br>On Fail</button>
+      <button id="pauseModeButton">Pause<br>On Fail</button>
+      <button id="continueModeButton">Continue<br>On Fail</button>
+    </div>
+
+    <!-- Sequence Selection, Controls and Status -->
+    <div class="flexContainer">
+      <div id="execSelect">
+        <label for="sequence" class="textRight">Select Sequence:</label>
+        <select name="sequence" id="sequence">
+          <option value="sequence">Sequence</option>
+        </select>
+        <label for="step" class="textRight">Select Step:</label>
+        <select name="step" id="step">
+          <option value="step">Step</option>
+        </select>
+      </div>
+      <div class="gap"></div>
+      <div class="playButtonContainer">
+        <button class="playButton" id="playButton"></button>
+      </div>
+      <div>
+        <button class="cancelButton" id="cancelButton"></button>
+      </div>
+      <div class="gap"></div>
+      <div id="statusBox" class="blackBorder statusBox">
+        <h1>Idle</h1>
+      </div>
+      <div class="gap"></div>
+    </div>
+    <br />
+
+
+    <!-- Product and Step Info -->
+    <div class="flexContainer">
+      <div class="halfWidth flexContainer">
+        <div class="boxLabel">
+          <label for="partNumber">Part Number</label>
+          <input id="partNumber" type="text" maxlength="30"/>
+        </div>
+        <div class="boxLabel">
+          <label for="rev">Rev</label>
+          <input id="rev" type="text" maxlength='5'/>
+        </div>
+        <div class="boxLabel">
+          <label for="serialNumber">Serial Number</label>
+          <input
+            class=""
+            id="serialNumber"
+            type="text"
+            maxlength='50'
+          />
+        </div>
+      </div>
+      <div class="halfWidth flexContainer">
+        <div class="stepNumber">
+          <h5>Step Number: <span id="currentNumber">---</span></h5>
+        </div>
+        <div class="stepName">
+          <h5>Step Name: <span id="currentName">---</span></h5>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- Progress Bar -->
+    <div class="flexContainer" style="min-height: 16px;">
+      <progress class="fullWidth" id="testProgress" value="100" max="100"></progress>
+    </div>
+    <hr/>
+
+    <!-- Warning -->
+    <div class="warning fullWidth"><span id="testWarning"></span></div>
+
+    <!-- Comment -->
+    <div class="comment fullWidth"><span id="testComment"></span></div>
+
+    <!-- Update File Selection-->
+    <input type="file" id="zipped" style="display:none" accept=".zip" />
+
+    <!-- Test History & Instruction -->
+    <div class="flexContainer historyAndInstructBox">
+      <div class="halfWidth">
+        <h4>Instruction</h4>
+        <div id="instruction" class="blackBorder"></div>
+      </div>
+      <div class="halfWidth">
+            <div id="history">
+              <a href=""><h4 id="stepHistoryTitle"><u>Test Step History</u></h4></a>
+              <div id="testHistoryDiv">
+                <table id="testHistoryTable">
+                  <thead>
+                    <tr>
+                      <th>Duration</th>
+                      <th>Number</th>
+                      <th>Name</th>
+                      <th>Lower</th>
+                      <th>Measured</th>
+                      <th>Upper</th>
+                      <th>Unit</th>
+                      <th>Rtry</th>
+                      <th>P/F</th>
+                    </tr>
+                  </thead>
+                  <tbody id="testHistoryBody">
+                    <!-- insert history here dynamically-->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div id="tempPicture" class="hidden"></div>
+      </div>  
+    </div>
+    <br />
+
+    <!-- Detailed Log -->
+    <div class="flexContainer">
+      <div><a href="cache/detailed.log" target="_blank"><h4><u>Detailed Log</u></h4></a></div>
+    </div>
+    <div class="flexContainer justifyCenter">
+      <textarea readonly id="detailedLog" class="blackBorder"></textarea>
+    </div>
+  </body>
+
+  <!-- Import Javascript -->
+  <script src=".\lib\d3.v7.js"></script>
+  <script src=".\lib\gui.js" type="module"></script>
+</html>

@@ -1,5 +1,5 @@
 # App 
-An application framework for web based GUIs with a Python backend.
+An template for desktop test sequencing apps with web based GUIs and a Python backend.
 
 
 ## About

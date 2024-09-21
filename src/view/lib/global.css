@@ -1,0 +1,589 @@
+/* global variables */
+:root {
+    --root-bg-color: rgb(229, 229, 229);
+    --root-color: black;
+    --root-shadow: rgba(0, 0, 0, 0.2);
+}
+/* Reset some defaults  */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /*color: var(--root-color);*/
+  }
+
+  @keyframes flashy {
+    50% {
+      background-color: rgba(255,140,0,1);
+    }
+  }
+
+/* Elemental Style  */
+body {
+    background-color: var(--root-bg-color);
+    font-family: "Poppins", sans-serif;
+    margin: 0px 5px;
+    max-width: calc(100% - 14px);
+    min-width: 780px;
+    color: var(--root-color);
+    overflow-y: auto;
+}
+.getAttention {
+    animation: flashy 2s linear infinite;
+}
+
+h3, h4 {
+    margin: 5px 0px;
+}
+p {
+    margin: 3px 0px;
+    background-color: white;
+    white-space: pre;
+}
+a {
+    text-decoration: none;
+    color: var(--root-color);
+    font-weight: 700;
+    font-size: .9rem;
+}
+td {
+    text-align: center;
+}
+ul, ol {
+    list-style-position: inside;
+}
+.blueButton {
+    background-color: rgb(65, 65, 255);
+    color: white;
+    min-width: 80px;
+    border-radius: 5px;
+    border: solid 0px;
+    height: 30px;
+}
+
+/* Generics */
+.flexContainer {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+.flexContainer>div{
+    flex: 1 0 auto;
+    text-align: center;
+}
+.justifyCenter {
+    justify-content: center;
+}
+.justifyRight {
+    justify-content: flex-end;
+}
+.justifyLeft {
+    justify-content: flex-start;
+}
+.justifySeparate{
+    justify-content: space-between;
+}
+.gap {
+    flex: 1 1 5%;
+}
+.halfWidth {
+    width: 50%;
+}
+.fullHeight {
+    height: 100%;
+}
+.fullWidth {
+    width: 100%;
+}
+.statusIdle {
+    border: 1px solid var(--root-color);
+}
+.textRight{
+    text-align: right;
+}
+.hidden {
+    display: none;
+}
+
+/* Nav Bar rev 2 */
+.navFrame {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+}
+.navFrame > div {
+    margin: 0 1.5rem;
+}
+.dropdown {
+    position: relative;
+    display: inline-block;
+    min-width: 100px;
+}
+.dropdown-content{
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px var(--root-shadow);
+    z-index: 1;
+}
+.dropdown-content>p, .dropdown-content>span{
+    margin: 2px 20px;
+    background-color: inherit;
+    color: black;
+}
+.dropdown-content>p:hover{
+    background-color: #d0d0d0;
+}
+.dropdown-content>p>a{
+    font-size: 1.2rem;
+    color: black;
+}
+.dropdown-content>p>span{
+    color: black;
+}
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/*  Nav Bar */
+.navList {
+    display: flex;
+    align-items: center;
+    list-style-type: none;
+}
+.navMenu {
+  margin: 0 2rem 0 1rem;
+  cursor:pointer;
+}
+.open {
+  font-size: 2.5rem;
+}
+.close {
+  font-size: 2rem;
+  font-weight: 700;
+}
+.navItem {
+  margin-right:1.5rem;
+}
+.navTime {
+  margin-right: 1.5rem;
+}
+.navTitle {
+  margin-left: auto;
+  margin-right: 2rem;
+}
+.toolTip {
+    cursor: pointer;
+}
+
+/*  Status Indicators */
+input[type="radio"].statusLED {
+    /* remove standard background appearance */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    /* create custom radiobutton appearance */
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    padding: 2px;
+    /* background-color only for content */
+    background-clip: content-box;
+    border: 2px solid var(--root-shadow);
+    background-color: var(--root-bg-color);
+    border-radius: 50%;
+}
+input[type="radio"].statusLED:checked {
+    background-color: #93e026;
+}
+
+/* Password Entry */
+#passwordEntry {
+    display: none;
+}
+#passwordEntry>button {
+    background-color: rgb(106, 103, 255);
+    color: white;
+    min-width: 80px;
+    border-radius: 5px;
+    border: solid 0px;
+    height: 30px;
+}
+#passwordEntry>button:focus {
+    box-shadow: 0 0 12px aqua;
+}
+.submitButton {
+    margin-bottom: 5px;
+}
+/* Revision entry */
+#seqRevisionEntry {
+    display: none;
+}
+#seqRevisionEntry>button {
+    background-color: rgb(106, 103, 255);
+    color: white;
+    min-width: 80px;
+    border-radius: 5px;
+    border: solid 0px;
+    height: 30px;
+}
+#seqRevisionEntry>button:focus {
+    box-shadow: 0 0 12px aqua;
+}
+/* Mode Selection */
+.modeEntry {
+    display: none;
+}
+.modeEntry>button {
+    /*background-color: #404040;*/
+    background-color: var(--root-shadow);
+    color: var(--root-color);
+    min-width: 120px;
+    border-radius: 5px;
+    border: 0px;
+    height: 40px;
+    cursor: pointer;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+#normalModeButton {
+    background-color: #008500;
+}
+.modeEntry>button:focus {
+    box-shadow: 0 0 12px aqua;
+}
+
+/* Test Controls and Status */
+#execSelect {
+    flex: 1 0 45%;
+    display: grid;
+    grid-template-columns: 40% 50%;
+    grid-gap: 5% 8px;
+    align-items: center;
+}
+#execSelect>select{
+    width: 100%;
+    font-size: medium;
+    padding: 0.3rem 0rem;
+    background-color: var(--root-bg-color);
+    color: var(--root-color);
+    cursor: pointer;
+}
+
+.playButton {
+    border: 0;
+    background: transparent;
+    box-sizing: border-box;
+    width: 0;
+    height: 74px;
+    margin: 0px 30px;
+    border-color: transparent transparent transparent #03a60b;
+    transition: 300ms all ease;
+    cursor: pointer;
+    border-style: solid;
+    border-width: 37px 0 37px 60px;
+  }
+.playButton.pause {
+    border-style: double;
+    border-width: 0px 0 0px 60px;
+    border-color: transparent transparent transparent var(--root-color);
+  }
+.playButtonContainer:hover .playButton {
+    border-color: transparent transparent transparent var(--root-shadow);
+}
+.playButton:hover {
+    border-color: transparent transparent transparent var(--root-shadow);
+  }
+.cancelButton {
+    background-color: #e00000;
+    border: none;
+    height: 74px;
+    width: 74px;
+    cursor: pointer;
+  }
+.cancelButton:hover{
+    background-color: #c00000;
+  }
+.action{
+    height:6em;
+    min-width: 15ex;
+}
+#statusBox {
+    height: 4rem;
+    line-height: 4rem;
+    min-width: 15ex;
+    color: var(--root-color);
+}
+#statusBox h1 {
+    vertical-align: middle;
+}
+@keyframes blinky {
+    50% {
+      opacity: 0;
+    }
+  }
+.statusRun {
+    background-color: cyan;
+}
+.statusRun h1 {
+    animation: blinky 2s linear infinite;
+    color: black;
+}
+.statusStop {
+    background-color: none;
+    color: #c00000;
+    border: 1px solid #c00000;
+}
+.statusStop h1 {
+    animation: blinky 1s linear infinite;
+}
+.statusPass {
+    background-color: #008500;
+}
+.statusPass h1 {
+    color: white;
+}
+.statusFail {
+    background-color: #c00000;
+}
+.statusFail h1 {
+    color: white;
+}
+
+
+/* PN, REV, SN inputs */
+.boxLabel {
+    display: inline-block;
+}
+.boxLabel>input {
+    width: 10rem;
+    margin: 0 5px;
+    line-height: 3ex;
+    border: 2px solid var(--root-color);
+    border-radius: 4px;
+    background-color: var(--root-bg-color);
+    color: var(--root-color);
+    padding: 0 2px;
+    cursor: pointer;
+    /*z-index: 1;*/
+}
+.boxLabel>label {
+    position: absolute;
+    transform: translate(16px, -10px) scale(1);
+    background-color: var(--root-bg-color);
+    color: var(--root-color);
+    padding: 0 1px;
+    font-size: small;
+}
+input:focus{
+    box-shadow: 0 0 12px aqua;
+}
+input:-internal-autofill-selected {
+    /*background-color: var(--root-bg-color) !important;*/
+    box-shadow: 0 0 50px var(--root-bg-color) inset;
+}
+input:-internal-autofill-selected:focus{
+    /*background-color: var(--root-bg-color) !important;*/
+    box-shadow: 0 0 50px var(--root-bg-color) inset;
+}
+#rev {
+    width: 4rem;
+}
+
+
+/* Current Step */
+.stepNumber {
+    width: 200px;
+}
+.stepName {
+    width: calc(100% - 210px);
+}
+
+
+/* Progress Bar & Comment */
+.comment {
+    text-align: center;
+    background-color: rgb(238, 232, 181);
+    color: black;
+}
+.warning {
+    text-align: center;
+    background-color: rgb(243, 170, 170);
+    color: black;
+}
+progress {
+    margin-top: 0.8rem;
+    margin-bottom: 0.5rem;
+    height: 14px;
+    border-radius: 5px;
+}
+progress::-webkit-progress-bar {
+    background-color: var(--root-bg-color);
+    border-radius: 5px;
+}
+progress::-webkit-progress-value {
+    background-color: rgb(65, 65, 255);
+    border-radius: 5px;
+}
+
+
+/* Test History & Instruction */
+#pictureGrid {
+    display: flex;
+    flex-wrap: wrap;
+    height: auto;
+    align-items: center;
+}
+#pictureGrid > img {
+    max-height: calc(100%);
+    cursor: pointer;
+    border: solid 1px var(--root-shadow);
+}
+#pictureGrid > video {
+    max-height: calc(100%);
+    cursor: pointer;
+    border: solid 1px var(--root-shadow);
+}
+.oneThird {
+    max-width: calc(100%/3);
+}
+.oneHalf {
+    max-width: calc(100%/2);
+}
+.oneFull {
+    max-width: 100%;
+}
+#pictureFrame {
+    align-items: stretch;
+}
+#pictureFrame > img {
+    max-width: 80%;
+}
+#pictureFrame> .picNav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(65, 65, 255);
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 5vw;
+}
+#pictureFrame> .disabled {
+    background-color: rgb(200, 200, 200);
+}
+#testHistoryDiv {
+    overflow-y: auto;
+    height: 320px;
+}
+#testHistoryTable>thead, th {
+    position: sticky;
+    top: 0;
+    background: var(--root-bg-color);
+}
+#testHistoryTable {
+    border-collapse: collapse;
+    width: 100%;
+}
+.historyAndInstructBox {
+    align-items: start;
+    /*min-height: 280px;*/
+}
+/* Instruction */
+#instruction {
+    width: 95%;
+    margin-left: 2.5%;
+    background: inherit;
+    min-height: 18px;
+}
+#instruction>p {
+    background: inherit;
+}
+#instruction>img {
+    max-height: 250px;
+}
+#countdown>h1{
+    font-size: 10rem;
+}
+.bigButton {
+    /*background-color: var(--root-color);*/
+    background-color: #4472C4;
+    color: var(--root-bg-color);
+    font-size: xx-large;
+    min-width: 180px;
+    border-radius: 10%/25%;
+    border: solid 1px var(--root-bg-color);
+    height: 60px;
+    cursor: pointer;
+    margin: 10px;
+}
+.bigButton:hover {
+    background-color: var(--root-shadow);
+}
+.radioInputPoll{
+    margin-left: 40px;
+    width: calc(100% - 40px);
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 25px;
+    font-size: x-large;
+    text-align: left;
+}
+
+
+/*  Detailed Log    */
+#detailedLog {
+    background: inherit;
+    color: var(--root-color);
+    height: 160px;
+    width: 95%;
+    white-space: pre-wrap;
+    margin-bottom: 10px;
+}
+/* Operator Input */
+button.operatorInput {
+    width: 8rem;
+    height: 4rem;
+    margin: 0.5rem 3rem;
+}
+button.pass {
+  color: white;
+  background-color: #03a60b;
+  cursor: pointer;
+}
+button.pass:focus{
+  box-shadow: 0 0 12px aqua;
+}
+button.fail {
+  color: white;
+  background-color: #c00000;
+  cursor: pointer;
+}
+button.fail:focus{
+  box-shadow: 0 0 12px aqua;
+}
+button.submit {
+    color: var(--root-color);
+    background-color: var(--root-bg-color);
+    cursor: pointer;
+}
+
+#inputField {
+    width: 15rem;
+    margin: 15px 0px;
+}
+
+.pageIndicator {
+    min-height: 4rem;
+    margin: 0.5rem 0rem;
+    display: inline-flex;
+    align-items: center;
+}
+
+.sparkline {
+    width: 150;
+    height: 40;
+}

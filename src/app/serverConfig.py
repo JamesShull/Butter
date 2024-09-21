@@ -9,16 +9,16 @@ from starlette.staticfiles import StaticFiles
 from starlette.responses import JSONResponse
 from sse_starlette import EventSourceResponse
 import time
+import platform
 
 api_version = '0.0.1'       # API version
 refreshDelay = 0.1          # sleep for refreshDelay seconds in onPublish() loop
-debug = True                # Allow more logging and terminal colors
-port = 5000                 # Port number for server
 
 async def versions(request):
     '''GUI requested API version.'''
     return JSONResponse({'api_version': str(api_version),
-                        'app_version': str(app.version)})
+                        'hostname': platform.node(),
+                        })
 
 async def onMessage(request):
     '''Receive a message from GUI'''

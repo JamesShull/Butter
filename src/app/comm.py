@@ -14,14 +14,17 @@ def checkAppQueue():
     except queue.Empty:
         incoming = None
 
-# Event handler 
+# Event handler (GUI -> APP)
 def receiveMessage(msg):
     '''Message handler from app queue (gui->app).'''
     logging.info(f"received: {msg}")
     match msg:
+        #TODO: Add messages to receive and what to do with the received data
         case {'message A': data}:
-            sendMessage({'message B': data})   # return message to GUI for no good reason
+            app.state.set('stateKeyA', data)
+            
 
+# GUI Update (APP -> GUI)
 def sendMessage(msg):
     '''Message handler to gui queue (app->gui).'''
     logging.info(f"sending: {msg}")

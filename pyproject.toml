@@ -1,0 +1,44 @@
+[tool.poetry]
+name = "butter"
+version = "0.0.1"
+description = "An template for desktop test sequencing apps with web based GUIs and a Python backend."
+authors = ["James Shull <james.shull@gmail.com>"]
+license = "MIT"
+readme = "README.md"
+packages = [{include = "src"}]
+
+[tool.poetry.dependencies]
+pillow = "^10.4.0"
+pyserial = "^3.5"
+python = ">=3.9, <3.13"
+pyvisa = "^1.14.1"
+requests = "^2.32.3"
+starlette = "^0.38.5"
+uvicorn = "^0.30.6"
+pythonnet = "^3.0.4"
+keyring = "^25.4.1"
+ft4222 = "^1.10.0"
+pywin32 = "^306"
+psutil = "^6.0.0"
+pyodbc = "^5.1.0"
+zebra = "^0.1.0"
+
+[tool.poetry.group.test]
+optional = true
+
+[tool.poetry.group.test.dependencies]
+pytest = "^8.3.3"
+selenium = "^4.25.0"
+webdriver-manager = "^4.0.2"
+
+[tool.poetry.group.docs]
+optional = true
+
+[tool.poetry.group.docs.dependencies]
+mkdocs = "^1.6.1"
+mkdocs-material = "^9.5.36"
+mkdocstrings = {extras = ["python"], version = "^0.26.1"}
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

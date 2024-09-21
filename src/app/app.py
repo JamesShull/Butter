@@ -1,4 +1,5 @@
 import app.comm as comm
+import app.background as bg
 from app.state import State
 import os
 import logging
@@ -7,6 +8,7 @@ import time
 
 version = '0.0.1'
 state = State()
+
 # ###################################### #  
 #           Main App Loop
 # ###################################### # 
@@ -23,7 +25,8 @@ def appMain(exit: threading.Event):
         # Process message from GUI (add logic to react to GUI events)
         comm.checkAppQueue()
 
-        backgroundTasks()
+        # Run background thread for background tasks
+        backgroundThread()
 
         # App logic goes here
 
@@ -34,14 +37,16 @@ thread = threading.Thread(target=appMain, args=[thread_exit], name='App')
 
 def initApp():
     '''App initialization hook'''
+    logging.info('App is initializing.')
     state.add('cwd', os.getcwd())
     state.add('backgroundTaskTimeout', time.time() + 60)
-    logging.info('App is initialized.')
+    comm.sendMessage(state.cache)
+    logging.info('App is done initializing.')
     return
 
-def backgroundTasks():
+def backgroundThread():
     if time.time() >= state.get('backgroundTaskTimeout'):
         state.set('backgroundTaskTimeout', time.time() + 60)
-        logging.info('App is running background tasks.')
-
-        
+        logging.info('App is starting background tasks.')
+        threading.Thread(target=bg.tasks, daemon=True, name='Backgound_Tasks')
+        logging.info('App is done with background tasks.')

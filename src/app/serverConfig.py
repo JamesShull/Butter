@@ -50,7 +50,7 @@ routes = [  # Map the routes available (list of callbacks)
     Route('/api/version', versions),
     Route('/api/v'+api_version+'/message', onMessage, methods=["POST"]),
     Route('/api/v'+api_version+'/subscribe', onPublish),
-    Mount('/', StaticFiles(directory="view", html=True), name='/')]
+    Mount('/', StaticFiles(directory="src/view", html=True), name='/')]
 
 def startup():
     '''Startup hook called by Starlette. '''

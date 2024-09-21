@@ -7,15 +7,15 @@ from starlette.applications import Starlette
 import traceback
 import uvicorn
 
-server =  Starlette(debug=serverConfig.debug, 
-                    routes=serverConfig.routes,
-                    on_startup=serverConfig.startup, 
-                    on_shutdown=serverConfig.shutdown)
-
 parser = argparse.ArgumentParser(description='Addie Main')
 parser.add_argument('--port', type=int, default=5000, help='port number of local server for GUI (default 5000)')
 parser.add_argument('--debug', type=bool, default=False, help='')
 args = parser.parse_args()
+
+server =  Starlette(debug=args.debug, 
+                    routes=serverConfig.routes,
+                    on_startup=serverConfig.startup, 
+                    on_shutdown=serverConfig.shutdown)
 
 if __name__ == '__main__':
     ''' Main App entry for <App Name>

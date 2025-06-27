@@ -28,7 +28,7 @@ server = Starlette(
 
 if __name__ == "__main__":
     """Main App entry for <App Name>
-    
+
     Starts Starlette server & API based on serverConfig and starts App
     in another thread.
     """

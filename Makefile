@@ -42,11 +42,19 @@ dev: install
 
 lint: install
 	@echo "Linting with ruff..."
-	$(PYTHON_BIN) -m ruff check .
+ifeq (,$(findstring Windows_NT,$(OS)))
+	. $(VENV_DIR)/bin/activate && $(PYTHON_BIN) -m ruff check .
+else
+	call $(VENV_DIR)\Scripts\activate.bat && $(PYTHON_BIN) -m ruff check .
+endif
 
 format: install
 	@echo "Formatting with ruff..."
-	$(PYTHON_BIN) -m ruff format .
+ifeq (,$(findstring Windows_NT,$(OS)))
+	. $(VENV_DIR)/bin/activate && $(PYTHON_BIN) -m ruff format .
+else
+	call $(VENV_DIR)\Scripts\activate.bat && $(PYTHON_BIN) -m ruff format .
+endif
 
 clean:
 	@echo "Cleaning up..."
@@ -61,9 +69,13 @@ else
 endif
 	-@rm -rf .ruff_cache 2>nul
 
-test:
-	@echo "No tests configured yet. Please add your test command."
-	# Example: $(PYTHON_BIN) -m pytest
+test: install
+	@echo "Running end-to-end tests with Playwright..."
+ifeq (,$(findstring Windows_NT,$(OS)))
+	$(VENV_DIR)/bin/python -m playwright test tests/
+else
+	$(VENV_DIR)\Scripts\python.exe -m playwright test tests/
+endif
 
 docs:
 	@echo "Building documentation with mkdocs..."

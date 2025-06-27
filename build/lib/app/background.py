@@ -1,2 +1,0 @@
-def tasks():
-    pass

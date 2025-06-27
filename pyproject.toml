@@ -3,7 +3,7 @@ name = "butter"
 version = "0.0.1"
 description = "An template for desktop test sequencing apps with web based GUIs and a Python backend."
 authors = [{ name = "James Shull", email = "james.shull@gmail.com" }]
-license = { text = "MIT" }
+license = "GPL-3.0-or-later"
 readme = "README.md"
 requires-python = ">=3.9, <3.13"
 dependencies = [
@@ -84,3 +84,6 @@ indent-style = "space"
 skip-magic-trailing-comma = false
 # Like Black, automatically detect the appropriate line ending.
 line-ending = "auto"
+
+[tool.setuptools.package-data]
+"view.docs" = ["**/*"]

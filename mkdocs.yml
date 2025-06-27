@@ -1,0 +1,12 @@
+site_name: Butter App Documentation
+site_description: Documentation for the Butter desktop test sequencing app
+site_author: Your Name
+nav:
+  - Home: index.md
+  - Project Structure: structure.md
+  - API Overview: api.md
+  - Usage Examples: usage.md
+docs_dir: docs
+site_dir: src/view/docs
+theme:
+  name: material

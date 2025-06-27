@@ -15,6 +15,15 @@ The python web server, Starlette, hosts static assets and API routes to support 
 
 ## Getting started
 
+> **Note for Windows users:**
+> This project uses `make` for common development tasks. Windows does not include `make` by default. You can easily install it as part of [GnuWin Make](http://gnuwin32.sourceforge.net/packages/make.htm) or via [Chocolatey](https://community.chocolatey.org/packages/make) with the command:
+> 
+> ```cmd
+> choco install make
+> ```
+> 
+> After installation, restart your terminal or IDE to ensure `make` is available in your PATH.
+
 This project uses `uv` for package management and `ruff` for linting and formatting. A `Makefile` is provided to streamline common tasks.
 
 **Prerequisites:**

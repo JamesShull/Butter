@@ -1,3 +1,53 @@
+# Python
 __pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*.egg-info/
+.eggs/
+
+# Virtual environments
+.venv/
+venv/
+ENV/
+
+# Build outputs
+dist/
+build/
+
+
+# Logs
 logs/
-poetry.lock
+
+# MkDocs build output
+src/view/docs/
+
+# Editor configs
+.vscode/
+.idea/
+*.code-workspace
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Environment/config files
+.env
+.env.*
+*.env
+*.envrc
+
+# Cursor and workspace configs
+.cursors/
+.cursor/
+*.swp
+*.swo
+
+# Node/npm
+node_modules/
+
+# Misc
+*.bak
+*.tmp
+*.log

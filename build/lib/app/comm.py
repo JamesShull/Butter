@@ -28,7 +28,7 @@ def receiveMessage(msg):
         # Add other elif isinstance(msg, dict) and "key" in msg blocks here
         # or handle other types of messages
     # else:
-    #     logging.warning(f"Received unhandled message: {msg}")
+    #     logging.warning(f"Received unhandled message type: {type(msg)} or content: {msg}")
 
 
 # GUI Update (APP -> GUI)
